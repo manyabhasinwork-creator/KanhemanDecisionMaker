@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "./sign-out-button";
+import CoachChat from "./coach-chat";
 
 // Protected page. Middleware already redirects signed-out visitors to
 // /login, but we re-check here too since this runs server-side and is the
@@ -20,16 +21,12 @@ export default async function DashboardPage() {
       </div>
       <div className="dashboard-card">
         <span className="tag">Signed in</span>
-        <h1>Welcome back</h1>
+        <h1>Decision Coach</h1>
         <p className="subhead">
           You&apos;re signed in as <strong>{user.email}</strong>.
         </p>
-        <p className="subhead">
-          This is a placeholder home base. The actual decision-reflection
-          conversation flow (Step 1 from the landing page) plugs in here
-          next.
-        </p>
       </div>
+      <CoachChat />
     </div>
   );
 }
